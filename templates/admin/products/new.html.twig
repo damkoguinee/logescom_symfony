@@ -1,0 +1,69 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Ajout produit{% endblock %}
+{% block carousel %}
+    <div id="carouselExampleAutoplaying" class="carousel slide" data-bs-ride="carousel">
+        <div class="carousel-inner">
+            <div class="carousel-item active">
+            <img src="images/bannieres/banniere-boutique.jpg" class="d-block w-100 " alt="tubes" style="height: 200px;">
+            </div>
+        </div>        
+    </div>
+ {% endblock %}
+ {% block categories %} {% endblock %}
+ {% block contact %} {% endblock %}
+ {% block collaborateurs %} {% endblock %}
+ {% block scroll %} {% endblock %}
+ {% block footer %} {% endblock %}
+{% block social %} {% endblock %}
+
+{% block produits %}
+    <div class="row">
+        {% include "_common/_nav_admin.html.twig" %}
+
+        <div class="col-sm-12 col-md-10">
+            <h3 class="text-center">Ajouter un nouveau produit</h3>
+            {{form_errors(productsForm)}}
+            {{form_start(productsForm)}}
+                <div class="row">
+                    <div class="col-sm-12 col-md-3">
+                        <label for="">Categorie <sup>*</sup></label>
+                        {{form_widget(productsForm.categorie)}}
+                    </div>
+                    <div class="col-sm-12 col-md-2">
+                        <label for="">Dimensions</label>
+                        {{form_widget(productsForm.dimension)}}
+                    </div>
+                    <div class="col-sm-12 col-md-2">
+                        <label for="">Epaisseur</label>
+                        {{form_widget(productsForm.epaisseur)}}
+                    </div>
+                    <div class="col-sm-12 col-md-3">
+                        <label for="">Origine</label>
+                        {{form_widget(productsForm.origine)}}
+                    </div>
+
+                    <div class="col-sm-12 col-md-2">
+                        <label for="">Type</label>
+                        {{form_widget(productsForm.type)}}
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-sm-12 col-md-6">
+                        <label for="">Référence<sup>*</sup></label>
+                        {{form_widget(productsForm.reference)}}
+                    </div>
+                    <div class="col-sm-12 col-md-6">
+                        <label for="">Désignation<sup>*</sup></label>
+                        {{form_widget(productsForm.designation)}}
+                    </div>
+                </div>
+                <button type="submit" class="btn btn-success my-2">Ajouter</button>
+            {{form_end(productsForm)}}
+
+            {# {{ include('admin/products/_form.html.twig') }} #}
+
+            <a class="btn btn-secondary" href="{{ path('app_admin_products_index') }}">Retour</a>
+        </div>
+    </div>
+{% endblock %}

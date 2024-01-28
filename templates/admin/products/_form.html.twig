@@ -1,0 +1,47 @@
+{# {{ form_start(form) }}
+{{form_errors(productsForm)}}
+    
+    <button type="submit" class="btn btn-success my-2">Modifier</button>
+{{ form_end(form) }} #}
+
+
+{{form_start(productsForm)}}
+    {{form_errors(productsForm)}}
+
+        <div class="row">
+            <div class="col-sm-12 col-md-3">
+                <label for="">Categorie <sup>*</sup></label>
+                {{form_widget(productsForm.categorie)}}
+            </div>
+            <div class="col-sm-12 col-md-2">
+                <label for="">Dimensions</label>
+                {{form_widget(productsForm.dimension)}}
+            </div>
+            <div class="col-sm-12 col-md-2">
+                <label for="">Epaisseur</label>
+                {{form_widget(productsForm.epaisseur)}}
+            </div>
+            <div class="col-sm-12 col-md-3">
+                <label for="">Origine</label>
+                {{form_widget(productsForm.origine)}}
+            </div>
+
+            <div class="col-sm-12 col-md-2">
+                <label for="">Type</label>
+                {{form_widget(productsForm.type)}}
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-sm-12 col-md-6">
+                <label for="">Référence<sup>*</sup></label>
+                {{form_widget(productsForm.reference)}}
+            </div>
+            <div class="col-sm-12 col-md-6">
+                <label for="">Désignation<sup>*</sup></label>
+                {{form_widget(productsForm.designation)}}
+            </div>
+        </div>
+        <button type="submit" class="btn btn-success my-2">Modifier</button>
+    {{form_end(productsForm)}}
+
+{# {{include("_common/_buttons_form.html.twig")}} #}

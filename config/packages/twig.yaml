@@ -1,5 +1,16 @@
 twig:
     file_name_pattern: '*.twig'
+    default_path: '%kernel.project_dir%/templates'
+    form_themes: ["bootstrap_5_layout.html.twig"]
+    date:
+        format: d/m/Y
+    
+    globals:
+        chemin_images_product: "images/img-product/"
+        chemin_images_bannieres: "images/bannieres/"
+        chemin_images_categories: "images/categories/"
+        chemin_images_logos: "images/img-logos/"
+        chemin_img_paie: "images/logo_paie/"
 
 when@test:
     twig:

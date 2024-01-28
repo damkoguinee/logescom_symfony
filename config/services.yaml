@@ -4,6 +4,12 @@
 # Put parameters here that don't need to change on each machine where the app is deployed
 # https://symfony.com/doc/current/best_practices.html#use-parameters-for-application-configuration
 parameters:
+    dossier_images: "%kernel.project_dir%/public/images"
+    dossier_img_products: "%kernel.project_dir%/public/images/img-product"
+    dossier_img_logos: "%kernel.project_dir%/public/images/img-logos"
+    dossier_banieres: "%kernel.project_dir%/public/images/bannieres"
+    dossier_categories: "%kernel.project_dir%/public/images/categories"
+    dossier_logo_paie: "%kernel.project_dir%/public/images/logo-paie"
 
 services:
     # default configuration for services in *this* file

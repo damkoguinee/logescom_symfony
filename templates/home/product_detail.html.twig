@@ -1,0 +1,240 @@
+{% extends "base.html.twig" %}
+
+{% block title %}
+    details des produits
+{% endblock %}
+
+{% block carousel %}
+    <div id="carouselExampleAutoplaying" class="carousel slide" data-bs-ride="carousel">
+        <div class="carousel-inner">
+            <div class="carousel-item active">
+            <img src="images/bannieres/banniere-boutique.jpg" class="d-block w-100 " alt="tubes" style="height: 200px;">
+            </div>
+        </div>        
+    </div>
+ {% endblock %}
+{% block categories %}
+
+    <div class="d-flex justify-content-center align-items-center">
+        <a href="" class="btn btn-secondary mx-1 my-4 p-3">Tubes Carrés</a>
+        <a href="" class="btn btn-secondary mx-1 my-4 p-3">Tubes Rectangulaires</a>
+        <a href="" class="btn btn-secondary mx-1 my-4 p-3">Cornières</a>
+    </div>
+    <h1 class="trait-h1"></h1>
+{% endblock %}
+{% block produits %}
+    <section class="section my-4">
+        <div class="row p-4">
+            <div class="col-2 border">
+                <span class="fw-bold">FILTRER PAR</span>
+                <h5 class="trait-h1 w-25"></h5>
+                <div class="choix-dimensions">
+                    <span class="fw-bold">Dimensions</span>
+
+                    <div class="form-check mx-2">
+                        <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault1">
+                        <label class="form-check-label" for="flexRadioDefault1">
+                            20x20
+                        </label>
+                    </div>
+
+                    <div class="form-check mx-2">
+                        <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault1">
+                        <label class="form-check-label" for="flexRadioDefault1">
+                            25x25
+                        </label>
+                    </div>
+
+                    <div class="form-check mx-2">
+                        <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault1">
+                        <label class="form-check-label" for="flexRadioDefault1">
+                            30x30
+                        </label>
+                    </div>
+
+                    <div class="form-check mx-2">
+                        <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault1">
+                        <label class="form-check-label" for="flexRadioDefault1">
+                            35x35
+                        </label>
+                    </div>  
+                </div>
+                
+                <div class="choix-epaisseurs">
+                    <span class="fw-bold">Epaisseurs</span>
+
+                    <div class="form-check mx-2">
+                        <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault1">
+                        <label class="form-check-label" for="flexRadioDefault1">
+                            1.5
+                        </label>
+                    </div>
+
+                    <div class="form-check mx-2">
+                        <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault1">
+                        <label class="form-check-label" for="flexRadioDefault1">
+                            2
+                        </label>
+                    </div>
+
+                    <div class="form-check mx-2">
+                        <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault1">
+                        <label class="form-check-label" for="flexRadioDefault1">
+                            3
+                        </label>
+                    </div>
+
+                    <div class="form-check mx-2">
+                        <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault1">
+                        <label class="form-check-label" for="flexRadioDefault1">
+                            4
+                        </label>
+                    </div>  
+                </div>
+
+                <div class="choix-origines">
+                    <span class="fw-bold">Origines</span>
+                    <div class="form-check mx-2">
+                        <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault1">
+                        <label class="form-check-label" for="flexRadioDefault1">
+                            Guinée
+                        </label>
+                    </div>
+
+                    <div class="form-check mx-2">
+                        <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault1">
+                        <label class="form-check-label" for="flexRadioDefault1">
+                            Sénégal
+                        </label>
+                    </div>
+
+                    <div class="form-check mx-2">
+                        <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault1">
+                        <label class="form-check-label" for="flexRadioDefault1">
+                            Turc
+                        </label>
+                    </div>
+
+                    <div class="form-check mx-2">
+                        <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault1">
+                        <label class="form-check-label" for="flexRadioDefault1">
+                            Chine
+                        </label>
+                    </div>  
+                </div>
+
+                <div class="choix-types">
+                    <span class="fw-bold">Types</span>
+
+                    <div class="form-check mx-2">
+                        <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault1">
+                        <label class="form-check-label" for="flexRadioDefault1">
+                            Galva
+                        </label>
+                    </div>
+
+                    <div class="form-check mx-2">
+                        <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault1">
+                        <label class="form-check-label" for="flexRadioDefault1">
+                            Noir
+                        </label>
+                    </div>
+                </div>
+            </div>
+            <div class="col-10 border">
+                <div>
+                    <p><strong>Koulamatco </strong>vous propose des tubes carrés de différentes dimensions, épaisseurs et origines. Vous pouvez choisir entre des barres de fer entières de 6 mètres de long, des barres coupées à des longueurs standards de 0,5 à 5 mètres ou coupées sur mesure, à votre dimension. Le tube fer carré peut être percé, vissé ou encore soudé pour réaliser diverses structures métalliques. Nos tubes carrés ont été laminés à chaud puis finis à froid pour des dimensions précises et une grande résistance.</p>
+                </div>
+                <div class="section-product-ventes">
+                    <div class="card img-product" style="width: 14rem; height: 16rem;">
+                        <a class="p-1" href="#" style="margin:auto;">
+                            <img class="img-logo" src="images/img-product/corniere.jpg" alt="image produit">
+                            <div class="card-body">
+                                <h3 class="card-title text-center fs-5 fw-bold">Cornière</h3>
+                                <div class=""> 
+                                    <div class="">À partir de 150 000 GNF</div>
+                                </div>
+                                <div class="text-success text-center">Disponible</div>
+                            </div>                                    
+                        </a>
+                    </div>
+
+                    <div class="card img-product" style="width: 14rem; height: 16rem;">
+                        <a class="p-1" href="#" style="margin:auto;">
+                            <img class="img-logo" src="images/img-product/corniere.jpg" alt="image produit">
+                            <div class="card-body">
+                                <h3 class="card-title text-center fs-5 fw-bold">Cornière</h3>
+                                <div class="d-flex justify-content-center"> 
+                                    <div class="">À partir de 150 000 GNF</div>
+                                </div>
+                                <div class="text-success text-center">Disponible</div>
+                            </div>                                    
+                        </a>
+                    </div>
+
+
+                    <div class="card img-product" style="width: 14rem; height: 16rem;">
+                        <a class="p-1" href="#" style="margin:auto;">
+                            <img class="img-logo" src="images/img-product/corniere.jpg" alt="image produit">
+                            <div class="card-body">
+                                <h3 class="card-title text-center fs-5 fw-bold">Cornière</h3>
+                                <div class="d-flex justify-content-center"> 
+                                    <div class="">À partir de 150 000 GNF</div>
+                                </div>
+                                <div class="text-success text-center">Disponible</div>
+                            </div>                                    
+                        </a>
+                    </div>
+
+
+                    <div class="card img-product" style="width: 14rem; height: 16rem;">
+                        <a class="p-1" href="#" style="margin:auto;">
+                            <img class="img-logo" src="images/img-product/corniere.jpg" alt="image produit">
+                            <div class="card-body">
+                                <h3 class="card-title text-center fs-5 fw-bold">Cornière</h3>
+                                <div class="d-flex justify-content-center"> 
+                                    <div class="">À partir de 150 000 GNF</div>
+                                </div>
+                                <div class="text-success text-center">Disponible</div>
+                            </div>                                    
+                        </a>
+                    </div>
+
+                    <div class="card img-product" style="width: 14rem; height: 16rem;">
+                        <a class="p-1" href="#" style="margin:auto;">
+                            <img class="img-logo" src="images/img-product/corniere.jpg" alt="image produit">
+                            <div class="card-body">
+                                <h3 class="card-title text-center fs-5 fw-bold">Cornière</h3>
+                                <div class="d-flex justify-content-center"> 
+                                    <div class="">À partir de 150 000 GNF</div>
+                                </div>
+                                <div class="text-success text-center">Disponible</div>
+                            </div>                                    
+                        </a>
+                    </div>
+
+                    <div class="card img-product" style="width: 14rem; height: 16rem;">
+                        <a class="p-1" href="#" style="margin:auto;">
+                            <img class="img-logo" src="images/img-product/corniere.jpg" alt="image produit">
+                            <div class="card-body">
+                                <h3 class="card-title text-center fs-5 fw-bold">Cornière</h3>
+                                <div class="d-flex justify-content-center"> 
+                                    <div class="">À partir de 150 000 GNF</div>
+                                </div>
+                                <div class="text-success text-center">Disponible</div>
+                            </div>                                    
+                        </a>
+                    </div>
+                </div>
+
+                <div class="description-produits">
+                    <p>Le tube profilé carré est un tube en fer issu d’un acier certifié S235 (ou E24) de premier choix. Laminé à chaud puis fini à froid, ce procédé de fabrication de l’acier de construction confère à nos produits une excellente longévité et une excellente robustesse à la déformation et à la rupture. Les tubes carrés de La Mine de Fer ont des dimensions très variées pour répondre à tous vos besoins. De différentes longueurs, épaisseurs et largeurs, vous pouvez choisir entre des barres de fer entières de 6m de long, des barres coupées à des longueurs standards de 0,5m à 5m, ou encore à vos propres dimensions grâce à notre service de découpe sur-mesure. </p>
+
+                    <p>Ces barres en acier sont conçues pour la construction d’ouvrages métalliques intérieurs ou extérieurs mais aussi, pour la rénovation en bâtiment où elles vont renforcer la ferronnerie et assurer une bien meilleure résistance dans le temps. Le tube fer carré peut être percé, vissé ou encore soudé pour réaliser toutes vos structures en métal.</p>
+
+                </div>
+            </div>
+        </div>
+        
+    </section>
+{% endblock %}
