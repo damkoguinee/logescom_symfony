@@ -50,20 +50,19 @@ class ProductsRepository extends ServiceEntityRepository
 /**
      * @return array
      */
-    public function findProductsPaginated(int $pageEnCours, int $limit): array
+    public function findProductsHomePaginated(int $pageEnCours, int $limit): array
     {
         $limit = abs($limit);
         $result = [];
         $query = $this->createQueryBuilder('a')
-            // ->orderBy('a.priorite', 'ASC')
             ->setMaxResults($limit)
             ->setFirstResult(($pageEnCours * $limit) - $limit);
         $paginator = new Paginator($query);
         $data = $paginator->getQuery()->getResult();
         // on vérifie qu'on a des données
-        if (empty($data)) {
-            return $result;
-        }
+        // if (empty($data)) {
+        //     return $result;
+        // }
         // on calcule le nombre des pages
 
         $nbrePages = ceil($paginator->count() / $limit);
@@ -71,7 +70,52 @@ class ProductsRepository extends ServiceEntityRepository
         
          $result['data'] = $data;
          $result['nbrePages'] = $nbrePages;
-         $result['pageEncours'] = $pageEnCours;
+         $result['pageProductsEncours'] = $pageEnCours;
+         $result['limit'] = $limit;         
+        return $result;
+    }
+
+    /**
+     * @return array
+     */
+    public function findProductsPaginated(int $id_categorie, int $pageEnCours, int $limit, ?array $filters_dimensions = null, ?array $filters_epaisseurs = null, ?array $filters_origines = null, ?array $filters_types = null): array
+    {
+        // dd($filters_dimensions, $filters_epaisseurs, $filters_origines, $filters_types);
+        $limit = abs($limit);
+        $result = [];
+        $query = $this->createQueryBuilder('a')
+        ->andWhere('a.categorie = :id_cat')
+        ->setParameter('id_cat', $id_categorie);
+
+        if (!empty($filters_dimensions)) {
+            $query->andWhere('a.dimension IN (:dimension)')
+                ->setParameter('dimension', array_values($filters_dimensions));
+        }
+
+        if (!empty($filters_epaisseurs)) {
+            $query->andWhere('a.epaisseur IN (:epaisseur)')
+                ->setParameter('epaisseur', array_values($filters_epaisseurs));
+        }
+
+        if (!empty($filters_origines)) {
+            $query->andWhere('a.origine IN (:origine)')
+                ->setParameter('origine', array_values($filters_origines));
+        }
+
+        if (!empty($filters_types)) {
+            $query->andWhere('a.type IN (:type)')
+                ->setParameter('type', array_values($filters_types));
+        }    
+        $query->setMaxResults($limit)
+        ->setFirstResult(($pageEnCours * $limit) - $limit);
+        $paginator = new Paginator($query);
+        $data = $paginator->getQuery()->getResult();
+        $nbrePages = ceil($paginator->count() / $limit);
+         // on remplit le tableau
+        
+         $result['data'] = $data;
+         $result['nbrePages'] = $nbrePages;
+         $result['pageProductsEncours'] = $pageEnCours;
          $result['limit'] = $limit;         
         return $result;
     }

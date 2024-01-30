@@ -10,7 +10,7 @@ twig:
         chemin_images_bannieres: "images/bannieres/"
         chemin_images_categories: "images/categories/"
         chemin_images_logos: "images/img-logos/"
-        chemin_img_paie: "images/logo_paie/"
+        chemin_img_paie: "images/logo-paie/"
 
 when@test:
     twig:

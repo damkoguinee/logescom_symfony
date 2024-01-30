@@ -61,9 +61,9 @@ class CategorieRepository extends ServiceEntityRepository
         $paginator = new Paginator($query);
         $data = $paginator->getQuery()->getResult();
         // on vérifie qu'on a des données
-        if (empty($data)) {
-            return $result;
-        }
+        // if (empty($data)) {
+        //     return $result;
+        // }
         // on calcule le nombre des pages
 
         $nbrePages = ceil($paginator->count() / $limit);

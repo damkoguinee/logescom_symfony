@@ -40,6 +40,12 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
     #[ORM\OneToMany(mappedBy: 'gestionnaire', targetEntity: LieuxVentes::class)]
     private Collection $lieuxVentes;
 
+    #[ORM\Column(length: 20, nullable: true)]
+    private ?string $telephone = null;
+
+    #[ORM\Column(length: 150, nullable: true)]
+    private ?string $email = null;
+
     public function __construct()
     {
         $this->lieuxVentes = new ArrayCollection();
@@ -165,6 +171,30 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
                 $lieuxVente->setGestionnaire(null);
             }
         }
+
+        return $this;
+    }
+
+    public function getTelephone(): ?string
+    {
+        return $this->telephone;
+    }
+
+    public function setTelephone(?string $telephone): static
+    {
+        $this->telephone = $telephone;
+
+        return $this;
+    }
+
+    public function getEmail(): ?string
+    {
+        return $this->email;
+    }
+
+    public function setEmail(?string $email): static
+    {
+        $this->email = $email;
 
         return $this;
     }

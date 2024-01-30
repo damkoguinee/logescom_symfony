@@ -59,6 +59,21 @@ $(document).ready(function() {
     
 });
 
+window.onscroll = function() { scrollFunction() };
+
+function scrollFunction() {
+    var scrollButton = document.getElementById("scrollButton");
+    if (document.body.scrollTop > 20 || document.documentElement.scrollTop > 20) {
+        scrollButton.style.display = "block";
+    } else {
+        scrollButton.style.display = "none";
+    }
+}
+
+function scrollToTop() {
+    document.documentElement.scrollTop = 0;
+}
+
 function alerteS(){
     return(confirm('Etes-vous sûr de vouloir supprimer?'));
 }
