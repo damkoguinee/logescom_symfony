@@ -17,13 +17,14 @@ use Symfony\Component\Mime\Email;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 use App\Repository\BannieresEntrepriseRepository;
+use App\Repository\CollaborateursRepository;
 use Symfony\Component\HttpFoundation\JsonResponse;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 
 class HomeController extends AbstractController
 {
     #[Route('/', name: 'app_home')]
-    public function index(Request $request, EntrepriseRepository $entrepriseRep, BannieresEntrepriseRepository $banniereRep, CategorieRepository $cateRep, ProductsRepository $productsRep, LieuxVentesRepository $lieuxVentesRep): Response
+    public function index(Request $request, EntrepriseRepository $entrepriseRep, BannieresEntrepriseRepository $banniereRep, CategorieRepository $cateRep, ProductsRepository $productsRep, LieuxVentesRepository $lieuxVentesRep, CollaborateursRepository $collaborateursRep): Response
     {
         $pageEncours = $request->get('pageEncours', 1);
         $pageProductsEncours = $request->get('pageProductsEncours', 1);
@@ -43,6 +44,7 @@ class HomeController extends AbstractController
         return $this->render('base.html.twig', [
             'entreprise' => $entreprise,
             'bannieres' => $banniereRep->findAll(),
+            'collaborateurs' => $collaborateursRep->findAll(),
             'categories' => $categories,
             'products' => $products,
             'lieux_ventes' => $lieuxVentesRep->findAll(),
@@ -51,7 +53,7 @@ class HomeController extends AbstractController
     }
 
     #[Route('/detail', name: 'app_home_detail_produit')]
-    public function productDetail(Request $request, EntrepriseRepository $entrepriseRep, BannieresEntrepriseRepository $banniereRep, CategorieRepository $cateRep, ProductsRepository $productsRep, LieuxVentesRepository $lieuxVentesRep, DimensionsRepository $dimensionsRep, EpaisseursRepository $epaisseursRep, OrigineProduitRepository $originesRep, TypeProduitRepository $typeRep): Response
+    public function productDetail(Request $request, EntrepriseRepository $entrepriseRep, BannieresEntrepriseRepository $banniereRep, CategorieRepository $cateRep, ProductsRepository $productsRep, LieuxVentesRepository $lieuxVentesRep, DimensionsRepository $dimensionsRep, EpaisseursRepository $epaisseursRep, OrigineProduitRepository $originesRep, TypeProduitRepository $typeRep, CollaborateursRepository $collaborateursRep): Response
     {
         $id_categorie = $request->get('id');
         $pageEncours = $request->get('pageEncours', 1);
@@ -60,7 +62,7 @@ class HomeController extends AbstractController
         $filters_epaisseurs = $request->get('epaisseurs', array());
         $filters_origines = $request->get('origines', array());
         $filters_types = $request->get('types', array());
-        $products = $productsRep->findProductsPaginated($id_categorie, $pageProductsEncours, 10, $filters_dimensions, $filters_epaisseurs, $filters_origines, $filters_types); 
+        $products = $productsRep->findProductsPaginated($id_categorie, $pageProductsEncours, 15, $filters_dimensions, $filters_epaisseurs, $filters_origines, $filters_types); 
         
         $categories = $cateRep->findCategoriesPaginated($pageEncours, 10); 
         $entreprise = $entrepriseRep->find(1);
@@ -89,6 +91,7 @@ class HomeController extends AbstractController
         return $this->render('home/product_detail.html.twig', [
             'entreprise' => $entreprise,
             'bannieres' => $banniereRep->findAll(),
+            'collaborateurs' => $collaborateursRep->findAll(),
             'banniere_boutique' => $banniereRep->find(1),
             'categories' => $categories,
             'categorie'  => $cateRep->find($id_categorie),
@@ -96,7 +99,7 @@ class HomeController extends AbstractController
             'lieux_ventes' => $lieuxVentesRep->findAll(),
             'lieux_ventes_map' => json_encode($lieux_ventes_map),
             'dimensions' => $dimensionsRep->findBy(['categorie' => $id_categorie], ['valeurDimension' => 'ASC']),
-            'epaisseurs' => $epaisseursRep->findAll(),
+            'epaisseurs' => $epaisseursRep->findBy(['categorie' => $id_categorie], ['valeurEpaisseur' => 'ASC']),
             'origines' => $originesRep->findAll(),
             'types' => $typeRep->findAll(),
 

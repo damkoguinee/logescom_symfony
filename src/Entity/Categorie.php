@@ -37,6 +37,9 @@ class Categorie
     #[ORM\Column(type: Types::TEXT, nullable: true)]
     private ?string $description = null;
 
+    #[ORM\OneToMany(mappedBy: 'categorie', targetEntity: Epaisseurs::class)]
+    private Collection $epaisseurs;
+
     public function __construct()
     {
         $this->products = new ArrayCollection();
@@ -45,6 +48,7 @@ class Categorie
         if ($this->couverture === null) {
             $this->couverture = 'defaut.jpg';
         }
+        $this->epaisseurs = new ArrayCollection();
     }
 
     public function getId(): ?int
@@ -168,6 +172,36 @@ class Categorie
     public function setDescription(?string $description): static
     {
         $this->description = $description;
+
+        return $this;
+    }
+
+    /**
+     * @return Collection<int, Epaisseurs>
+     */
+    public function getEpaisseurs(): Collection
+    {
+        return $this->epaisseurs;
+    }
+
+    public function addEpaisseur(Epaisseurs $epaisseur): static
+    {
+        if (!$this->epaisseurs->contains($epaisseur)) {
+            $this->epaisseurs->add($epaisseur);
+            $epaisseur->setCategorie($this);
+        }
+
+        return $this;
+    }
+
+    public function removeEpaisseur(Epaisseurs $epaisseur): static
+    {
+        if ($this->epaisseurs->removeElement($epaisseur)) {
+            // set the owning side to null (unless already changed)
+            if ($epaisseur->getCategorie() === $this) {
+                $epaisseur->setCategorie(null);
+            }
+        }
 
         return $this;
     }

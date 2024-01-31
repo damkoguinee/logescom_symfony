@@ -1,15 +1,7 @@
 {% extends 'base.html.twig' %}
 
 {% block title %}dimension{% endblock %}
-{% block carousel %}
-    <div id="carouselExampleAutoplaying" class="carousel slide" data-bs-ride="carousel">
-        <div class="carousel-inner">
-            <div class="carousel-item active">
-            <img src="images/bannieres/banniere-boutique.jpg" class="d-block w-100 " alt="tubes" style="height: 200px;">
-            </div>
-        </div>        
-    </div>
- {% endblock %}
+{% block carousel %}{% endblock %}
  {% block categories %} {% endblock %}
  {% block contact %} {% endblock %}
  {% block collaborateurs %} {% endblock %}
@@ -49,13 +41,7 @@
                                 <tr>
                                     <td class="text-center">
                                         {{ (key)+1 }}
-                                        {% if product.categorie.couverture %}            
-                                            {# {{product.categorie.couverture|img("miniature", "couverture manquante")|raw}} #}
-                                            <img src="{{asset(chemin_images_product) ~ product.categorie.couverture}}" alt="image {{ product.reference }}" class="miniature">                        
-
-                                        {% else %}
-                                            <img alt="image {{product.reference}}" class="miniature">
-                                        {% endif %}
+                                        
                                     </td>
                                     <td>{{ product.reference }}</td>
                                     <td>{{ product.designation }}</td>

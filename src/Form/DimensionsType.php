@@ -20,6 +20,8 @@ class DimensionsType extends AbstractType
                 "placeholder"       =>"Selectionner une catégorie"
             ])
             ->add('valeurDimension')
+            ->add('unite')
+
         ;
     }
 

@@ -24,6 +24,9 @@ class Dimensions
     #[ORM\ManyToOne(inversedBy: 'dimensions')]
     private ?Categorie $categorie = null;
 
+    #[ORM\Column(length: 15, nullable: true)]
+    private ?string $unite = null;
+
     public function __construct()
     {
         $this->products = new ArrayCollection();
@@ -84,6 +87,18 @@ class Dimensions
     public function setCategorie(?Categorie $categorie): static
     {
         $this->categorie = $categorie;
+
+        return $this;
+    }
+
+    public function getUnite(): ?string
+    {
+        return $this->unite;
+    }
+
+    public function setUnite(?string $unite): static
+    {
+        $this->unite = $unite;
 
         return $this;
     }

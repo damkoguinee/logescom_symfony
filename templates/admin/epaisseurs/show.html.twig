@@ -1,15 +1,7 @@
 {% extends 'base.html.twig' %}
 
 {% block title %}epaisseur{% endblock %}
-{% block carousel %}
-    <div id="carouselExampleAutoplaying" class="carousel slide" data-bs-ride="carousel">
-        <div class="carousel-inner">
-            <div class="carousel-item active">
-            <img src="images/bannieres/banniere-boutique.jpg" class="d-block w-100 " alt="tubes" style="height: 200px;">
-            </div>
-        </div>        
-    </div>
- {% endblock %}
+{% block carousel %}{% endblock %}
  {% block categories %} {% endblock %}
  {% block contact %} {% endblock %}
  {% block collaborateurs %} {% endblock %}
@@ -17,7 +9,7 @@
  {% block footer %} {% endblock %}
 
 {% block produits %}
-    <h3 class="text-center">epaisseur {{epaisseur.valeurepaisseur}}</h3>
+    <h3 class="text-center">Epaisseur {{epaisseur.valeurepaisseur}}</h3>
 
     <table class="table">
         <tbody>
@@ -26,8 +18,47 @@
                 <td>{{ epaisseur.id }}</td>
             </tr>
             <tr>
-                <th>epaisseur</th>
-                <td>{{ epaisseur.valeurEpaisseur }}</td>
+                <th>épaisseur</th>
+                <td>{{ epaisseur.valeurepaisseur }}</td>
+            </tr>
+            <tr>
+                <td colspan="2">
+                    <table class="table table-bordered table-striped table-hover align-middle">
+                        <thead class="sticky-top bg-light text-center">
+                            <tr>
+                                <th colspan="4" class="bg-info">Liste des produits de l'épaisseur {{ epaisseur.valeurepaisseur}} <a class="btn btn-primary" href="{{ path('app_admin_products_new') }}">Ajouter un produit</a></th>
+                            </tr>
+                            <tr>
+                                <th>N°</th>
+                                <th>Référence</th>
+                                <th>Désignation</th>
+                                <th>Actions</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            {% for key, product in products %}
+            
+                                <tr>
+                                    <td class="text-center">
+                                        {{ (key)+1 }}
+                                        
+                                    </td>
+                                    <td>{{ product.reference }}</td>
+                                    <td>{{ product.designation }}</td>
+                                    <td class="text-center">
+                                        <a class="btn btn-success" href="{{ path('app_admin_products_show', {'id': product.id}) }}"><i class="fa fa-eye"></i></a>
+                                        <a class="btn btn-warning" href="{{ path('app_admin_products_edit', {'id': product.id}) }}"><i class="fa fa-edit"></i></a>
+                                    </td>
+                                </tr>
+                            {% else %}
+                                <tr>
+                                    <td colspan="4">Aucun produit trouvé</td>
+                                </tr>
+                            {% endfor %}
+                        </tbody>
+                    </table>
+
+                </td>
             </tr>
         </tbody>
     </table>

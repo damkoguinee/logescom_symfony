@@ -1,4 +1,5 @@
 {{ form_start(form) }}
     {{ form_widget(form) }}
-    {{include("_common/_buttons_form.html.twig")}}
+    <button class="btn btn-primary">{{ button_label|default('') }}</button> 
+
 {{ form_end(form) }}

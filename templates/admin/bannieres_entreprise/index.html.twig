@@ -1,15 +1,7 @@
 {% extends 'base.html.twig' %}
 
 {% block title %}bannières{% endblock %}
-{% block carousel %}
-    <div id="carouselExampleAutoplaying" class="carousel slide" data-bs-ride="carousel">
-        <div class="carousel-inner">
-            <div class="carousel-item active">
-            <img src="images/bannieres/banniere-boutique.jpg" class="d-block w-100 " alt="tubes" style="height: 200px;">
-            </div>
-        </div>        
-    </div>
- {% endblock %}
+{% block carousel %}{% endblock %}
  {% block categories %} {% endblock %}
  {% block contact %} {% endblock %}
  {% block collaborateurs %} {% endblock %}
@@ -41,7 +33,10 @@
                             </td>
                             <td class="text-center">
                                 {# <a class="btn btn-success" href="{{ path('app_admin_bannieres_entreprise_show', {'id': bannieres_entreprise.id}) }}"><i class="fa fa-eye"></i></a> #}
-                                <a onclick="alerteS()" class="btn btn-danger" href="{{ path('app_admin_bannieres_entreprise_delete', {'id': bannieres_entreprise.id}) }}"><i class="fa fa-trash"></i></a>
+                                {% if bannieres_entreprise.id != 1 %}
+                                
+                                    <a onclick="alerteS()" class="btn btn-danger" href="{{ path('app_admin_bannieres_entreprise_delete', {'id': bannieres_entreprise.id}) }}"><i class="fa fa-trash"></i></a>
+                                {% endif %}
                             </td>
                         </tr>
                     {% else %}

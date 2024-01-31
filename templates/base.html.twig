@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html>
     <head>
+		<meta name="description" content="matériel de construction, matériaux de construction, tubes carrés, tubes rectangulaires, tôles, maison, soudure, quincaillerie">
         <meta charset="UTF-8">
         <title>{% block title %}home{% endblock %}</title>
         {# <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 128 128%22><text y=%221.2em%22 font-size=%2296%22>⚫️</text><text y=%221.3em%22 x=%220.2em%22 font-size=%2276%22 fill=%22%23fff%22>sf</text></svg>"> #}
@@ -366,13 +367,16 @@
                             <h1 class="text-center trait-h1" id="collaborateurs">Ils nous ont fait confiance</h1>
                             <div class="container-fluid py-4">
                                 <div class="d-flex align-items-center justify-content-center">
-                                    <div class="col py-2"><img class="imgCollaborateurs" src="{{asset(chemin_images_logos)}}logot.jpg" alt="logo collaborateurs"></div>
-                                    <div class="col py-2"><img class="imgCollaborateurs" src="{{asset(chemin_images_logos)}}logoafbico.jpg" alt="logo collaborateurs"></div>
-                                    <div class="col py-2"><img class="imgCollaborateurs" src="{{asset(chemin_images_logos)}}logodamko.jpg" alt="logo collaborateurs"></div>
-                                    <div class="col py-2"><img class="imgCollaborateurs" src="{{asset(chemin_images_logos)}}logoets.jpg" alt="logo collaborateurs"></div>
-                                    <div class="col py-2"><img class="imgCollaborateurs" src="{{asset(chemin_images_logos)}}logom.jpg" alt="logo collaborateurs"></div>
-                                    <div class="col py-2"><img class="imgCollaborateurs" src="{{asset(chemin_images_logos)}}logomodc.jpg" alt="logo collaborateurs"></div>
-                                    <div class="col py-2"><img class="imgCollaborateurs" src="{{asset(chemin_images_logos)}}logoosam.jpg" alt="logo collaborateurs"></div>
+                                    {% for collaborateur in collaborateurs %}
+                                        <div class="col py-2"><img class="imgCollaborateurs" src="{{asset(chemin_images_logos) ~ collaborateur.logo }}" alt="logo collaborateurs"></div>
+                                        
+                                        {# <div class="col py-2"><img class="imgCollaborateurs" src="{{asset(chemin_images_logos)}}logoafbico.jpg" alt="logo collaborateurs"></div>
+                                        <div class="col py-2"><img class="imgCollaborateurs" src="{{asset(chemin_images_logos)}}logodamko.jpg" alt="logo collaborateurs"></div>
+                                        <div class="col py-2"><img class="imgCollaborateurs" src="{{asset(chemin_images_logos)}}logoets.jpg" alt="logo collaborateurs"></div>
+                                        <div class="col py-2"><img class="imgCollaborateurs" src="{{asset(chemin_images_logos)}}logom.jpg" alt="logo collaborateurs"></div>
+                                        <div class="col py-2"><img class="imgCollaborateurs" src="{{asset(chemin_images_logos)}}logomodc.jpg" alt="logo collaborateurs"></div>
+                                        <div class="col py-2"><img class="imgCollaborateurs" src="{{asset(chemin_images_logos)}}logoosam.jpg" alt="logo collaborateurs"></div> #}
+                                    {% endfor %}
                                 </div>
                             </div>
                         </section>
