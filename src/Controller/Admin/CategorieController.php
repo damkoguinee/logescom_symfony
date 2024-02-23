@@ -4,6 +4,8 @@ namespace App\Controller\Admin;
 
 use App\Entity\Products;
 use App\Entity\Categorie;
+use App\Entity\Dimensions;
+use App\Entity\Epaisseurs;
 use App\Form\CategorieType;
 use App\Repository\ProductsRepository;
 use App\Repository\CategorieRepository;
@@ -61,7 +63,33 @@ class CategorieController extends AbstractController
                 $fichier->move($this->getParameter("dossier_categories"),$nouveauNomFichier);
                 $categorie->setCouverture($nouveauNomFichier);
             }
+
+            // dd($request->get('dimension'));
+            $dimensions_form = $request->get('dimension');
+            $epaisseurs_form = $request->get('epaisseur');
+            if ($dimensions_form) {
+                foreach ($dimensions_form as  $dimension) {
+                    $dimensions = new Dimensions();
+
+                    $dimensions->setValeurDimension($dimension);
+                    $categorie->addDimension($dimensions);
+
+                    $entityManager->persist($dimensions);
+
+                }
+            }
+            if ($epaisseurs_form) {
+                foreach ($epaisseurs_form as  $epaisseur) {
+                    $epaisseurs = new Epaisseurs();
+                    $epaisseurs->setValeurEpaisseur($epaisseur);
+                    $categorie->addEpaisseur($epaisseurs);
+
+                    $entityManager->persist($epaisseurs);
+
+                }
+            }
             $entityManager->persist($categorie);
+            
             $entityManager->flush();
             $this->addFlash("success", "la catégorie a bien été ajoutée");
             return $this->redirectToRoute('app_admin_categorie_index', [], Response::HTTP_SEE_OTHER);
@@ -91,6 +119,7 @@ class CategorieController extends AbstractController
     #[Route('/{id}/edit', name: 'app_admin_categorie_edit', methods: ['GET', 'POST'])]
     public function edit(Request $request, Categorie $categorie, EntityManagerInterface $entityManager, EntrepriseRepository $entrepriseRep): Response
     {
+        // dd($request);
         $form = $this->createForm(CategorieType::class, $categorie);
         $form->handleRequest($request);
 
@@ -140,6 +169,10 @@ class CategorieController extends AbstractController
                     $uploadedImages[] = $nouveauNomFichier;
                 }
                 $categorie->setImgProduit($uploadedImages);
+            }
+            $description_defaut = $request->get("description_defaut");
+            if (!$form->getviewData()->getDescription()) {
+                $categorie->setDescription($description_defaut);
             }
             $entityManager->flush();
 

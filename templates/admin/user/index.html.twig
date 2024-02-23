@@ -1,12 +1,16 @@
-{% extends 'base.html.twig' %}
+{% extends 'base_logescom.html.twig' %}
 
 {% block title %}liste des utilisateurs{% endblock %}
-{% block carousel %}{% endblock %}
+ {% block carousel %}
+    <div id="carouselExampleAutoplaying" class="carousel slide py-2" data-bs-ride="carousel">
+    </div>
+ {% endblock %}
  {% block categories %} {% endblock %}
  {% block contact %} {% endblock %}
  {% block collaborateurs %} {% endblock %}
  {% block scroll %} {% endblock %}
  {% block footer %} {% endblock %}
+ {% block social %} {% endblock %}
 
 {% block produits %}
 	{{ include("_common/_messages_flash.html.twig") }}
@@ -35,7 +39,7 @@
                 <td>{{ user.nom }}</td>
                 <td>{{ user.prenom }}</td>
                 <td>{{ user.telephone }}</td>
-                <td>{{ user.dateInscription ? user.dateInscription|date('d/m/Y') : '' }}</td>
+                {# <td>{{ user.dateInscription ? user.dateInscription|date('d/m/Y') : '' }}</td> #}
                 <td class="text-center">
                     <a class="btn btn-success" href="{{ path('app_admin_user_show', {'id': user.id}) }}"><i class="fa fa-eye"></i></a>
                     <a class="btn btn-warning" href="{{ path('app_admin_user_edit', {'id': user.id}) }}"><i class="fa fa-edit"></i></a>
@@ -52,4 +56,3 @@
     <a class="btn btn-primary" href="{{ path('app_admin_user_new') }}">Ajouter un utilisateur</a>
 
 {% endblock %}
-{% block footer %}{% endblock %}

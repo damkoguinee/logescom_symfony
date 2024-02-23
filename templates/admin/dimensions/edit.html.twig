@@ -1,12 +1,16 @@
-{% extends 'base.html.twig' %}
+{% extends 'base_logescom.html.twig' %}
 
 {% block title %}edit dimensions{% endblock %}
-{% block carousel %}{% endblock %}
+ {% block carousel %}
+    <div id="carouselExampleAutoplaying" class="carousel slide py-2" data-bs-ride="carousel">
+    </div>
+ {% endblock %}
  {% block categories %} {% endblock %}
  {% block contact %} {% endblock %}
  {% block collaborateurs %} {% endblock %}
  {% block scroll %} {% endblock %}
  {% block footer %} {% endblock %}
+ {% block social %} {% endblock %}
 
 {% block produits %}
     <h3 class="text-center">Modifier {{dimension.valeurDimension}}</h3>    

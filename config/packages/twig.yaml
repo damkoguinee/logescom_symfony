@@ -11,6 +11,8 @@ twig:
         chemin_images_categories: "images/categories/"
         chemin_images_logos: "images/img-logos/"
         chemin_img_paie: "images/logo-paie/"
+        chemin_photo_personnel: "personnel/photo/"
+        chemin_identite_personnel: "personnel/identite/"
 
 when@test:
     twig:

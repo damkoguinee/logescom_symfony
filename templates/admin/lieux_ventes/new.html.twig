@@ -1,12 +1,16 @@
-{% extends 'base.html.twig' %}
+{% extends 'base_logescom.html.twig' %}
 
 {% block title %}New LieuVentes{% endblock %}
-{% block carousel %}{% endblock %}
+ {% block carousel %}
+    <div id="carouselExampleAutoplaying" class="carousel slide py-2" data-bs-ride="carousel">
+    </div>
+ {% endblock %}
  {% block categories %} {% endblock %}
  {% block contact %} {% endblock %}
  {% block collaborateurs %} {% endblock %}
  {% block scroll %} {% endblock %}
  {% block footer %} {% endblock %}
+ {% block social %} {% endblock %}
 
  {% block produits %}
     <div class="row">
@@ -16,7 +20,7 @@
 
             {{ include('admin/lieux_ventes/_form.html.twig') }}
 
-            <a href="{{ path('app_admin_entreprise_index') }}">Retour</a>
+            <a class="btn btn-light my-2" href="{{ path('app_admin_entreprise_index') }}">Retour</a>
         </div>
     </div>
 {% endblock %}

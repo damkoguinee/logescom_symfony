@@ -6,6 +6,7 @@ use App\Entity\Entreprise;
 use App\Form\EntrepriseType;
 use App\Repository\EntrepriseRepository;
 use App\Repository\LieuxVentesRepository;
+use App\Repository\ListeStockRepository;
 use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Component\Filesystem\Filesystem;
 use Symfony\Component\HttpFoundation\Request;
@@ -58,11 +59,12 @@ class EntrepriseController extends AbstractController
     }
 
     #[Route('/{id}', name: 'app_admin_entreprise_show', methods: ['GET'])]
-    public function show(Entreprise $entreprise, LieuxVentesRepository $lieuxVentesRep): Response
+    public function show(Entreprise $entreprise, LieuxVentesRepository $lieuxVentesRep, ListeStockRepository $listeStockRep): Response
     {
         return $this->render('admin/entreprise/show.html.twig', [
             'entreprise' => $entreprise,
             'lieux_ventes' => $lieuxVentesRep->findAll(),
+            'listes_stocks' => $listeStockRep->findAll(),
         ]);
     }
 

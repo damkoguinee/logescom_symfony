@@ -1,13 +1,17 @@
-{% extends 'base.html.twig' %}
+{% extends 'base_logescom.html.twig' %}
 
 {% block title %}Transporter index{% endblock %}
 
-{% block carousel %}{% endblock %}
+ {% block carousel %}
+    <div id="carouselExampleAutoplaying" class="carousel slide py-2" data-bs-ride="carousel">
+    </div>
+ {% endblock %}
  {% block categories %} {% endblock %}
  {% block contact %} {% endblock %}
  {% block collaborateurs %} {% endblock %}
  {% block scroll %} {% endblock %}
  {% block footer %} {% endblock %}
+ {% block social %} {% endblock %}
 
 {% block produits %}
     <h1>Transporter index</h1>

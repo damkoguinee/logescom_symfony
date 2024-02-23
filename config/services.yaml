@@ -10,6 +10,8 @@ parameters:
     dossier_banieres: "%kernel.project_dir%/public/images/bannieres"
     dossier_categories: "%kernel.project_dir%/public/images/categories"
     dossier_logo_paie: "%kernel.project_dir%/public/images/logo-paie"
+    dossier_photo_personnel: "%kernel.project_dir%/public/personnel/photo"
+    dossier_identite_personnel: "%kernel.project_dir%/public/personnel/identite"
 
 services:
     # default configuration for services in *this* file
@@ -28,3 +30,4 @@ services:
 
     # add more service definitions when explicit configuration is needed
     # please note that last definitions always *replace* previous ones
+    

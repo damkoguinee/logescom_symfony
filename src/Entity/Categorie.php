@@ -7,8 +7,12 @@ use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
 use Doctrine\DBAL\Types\Types;
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
+
 
 #[ORM\Entity(repositoryClass: CategorieRepository::class)]
+#[UniqueEntity(fields: ['nameCategorie'], message: 'Le nom de la catégorie doit être unique.')]
+
 class Categorie
 {
     #[ORM\Id]
@@ -25,7 +29,7 @@ class Categorie
     #[ORM\OneToMany(mappedBy: 'categorie', targetEntity: Products::class)]
     private Collection $products;
 
-    #[ORM\OneToMany(mappedBy: 'categorie', targetEntity: Dimensions::class)]
+    #[ORM\OneToMany(mappedBy: 'categorie', targetEntity: Dimensions::class, cascade: ['remove'])]
     private Collection $dimensions;
 
     #[ORM\Column(type: "json", nullable: true)]
@@ -37,7 +41,7 @@ class Categorie
     #[ORM\Column(type: Types::TEXT, nullable: true)]
     private ?string $description = null;
 
-    #[ORM\OneToMany(mappedBy: 'categorie', targetEntity: Epaisseurs::class)]
+    #[ORM\OneToMany(mappedBy: 'categorie', targetEntity: Epaisseurs::class, cascade: ['remove'])]
     private Collection $epaisseurs;
 
     public function __construct()

@@ -1,0 +1,62 @@
+{% extends 'base_logescom.html.twig' %}
+
+{% block title %}lieux-ventes{% endblock %}
+ {% block scroll %} {% endblock %}
+ {% block carousel %}
+    <div id="carouselExampleAutoplaying" class="carousel slide py-2" data-bs-ride="carousel" >
+    </div>
+ {% endblock %}
+
+{% block produits %}
+    <div class="container-fluid d-flex justify-content-center align-items-center" style="min-height: 90vh; background-color:#193c51;" >
+
+        <div class="row m-4 p-4 justify-content-center align-item-center" style="margin: auto; width:90%; background-image: url({{ asset('images/config/fond.jpg') }});">
+
+            <div class="col-sm-6 col-md-3 col-lg-3 m-auto my-4">
+                <a  class="btn btn-secondary" href="{{path("app_logescom_stock_liste_inventaire_new", {lieu_vente : lieu_vente.id})}}">
+                    <div class="card" style="width: 9rem;">
+                        <img src="{{ asset('images/config/achat.jpg') }}" class="card-img-top m-auto" alt="vente" style="width: 5rem; height: 5rem">
+                        <div class="card-bod m-auto ">
+                            <h6 class="card-title text-center">Ventes Direct</h6>
+                        </div>
+                    </div>
+                </a>
+            </div>
+            
+            <div class="col-sm-6 col-md-3 col-lg-3 m-auto my-4">
+                <a  class="btn btn-secondary" href="{{path("app_logescom_stock_gestion_stock_index", {lieu_vente : lieu_vente.id})}}">
+                    <div class="card" style="width: 9rem;">
+                        <img src="{{ asset('images/config/stock.jpg') }}" class="card-img-top m-auto" alt="stock" style="width: 5rem; height: 5rem">
+                        <div class="card-bod m-auto ">
+                            <h6 class="card-title text-center">Gestion de stock</h6>
+                        </div>
+                    </div>
+                </a>
+            </div>
+
+            <div class="col-sm-6 col-md-3 col-lg-3 m-auto my-4">
+                <a  class="btn btn-secondary" href="{{path("app_logescom_stock_liste_inventaire_new", {lieu_vente : lieu_vente.id})}}">
+                    <div class="card" style="width: 9rem;">
+                        <img src="{{ asset('images/config/personnel.jpg') }}" class="card-img-top m-auto" alt="personnel" style="width: 5rem; height: 5rem">
+                        <div class="card-bod m-auto ">
+                            <h6 class="card-title text-center">Gestion/personnel</h6>
+                        </div>
+                    </div>
+                </a>
+            </div>
+
+            <div class="col-sm-6 col-md-3 col-lg-3 m-auto my-4">
+                <a  class="btn btn-secondary" href="{{path("app_logescom_stock_liste_inventaire_new", {lieu_vente : lieu_vente.id})}}">
+                    <div class="card" style="width: 9rem;">
+                        <img src="{{ asset('images/config/clients.jpg') }}" class="card-img-top m-auto" alt="clients" style="width: 5rem; height: 5rem">
+                        <div class="card-bod m-auto ">
+                            <h6 class="card-title text-center">Gestion/clients</h6>
+                        </div>
+                    </div>
+                </a>
+            </div>
+            
+        </div>
+    </div>
+{% endblock %}
+

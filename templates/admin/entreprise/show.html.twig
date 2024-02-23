@@ -1,12 +1,16 @@
-{% extends 'base.html.twig' %}
+{% extends 'base_logescom.html.twig' %}
 
 {% block title %}detail entreprise{% endblock %}
-{% block carousel %}{% endblock %}
+ {% block carousel %}
+    <div id="carouselExampleAutoplaying" class="carousel slide py-2" data-bs-ride="carousel">
+    </div>
+ {% endblock %}
  {% block categories %} {% endblock %}
  {% block contact %} {% endblock %}
  {% block collaborateurs %} {% endblock %}
  {% block scroll %} {% endblock %}
  {% block footer %} {% endblock %}
+ {% block social %} {% endblock %}
 
 {% block produits %}
     <div class="row">
@@ -98,6 +102,46 @@
                                                 <tr>
                                                     <th>Pays</th>
                                                     <td>{{ lieu_vente.pays }}</td>
+                                                </tr>
+
+                                                <tr>
+                                                    <th colspan="2">
+                                                        <a href="{{path("app_admin_liste_stock_new")}}" class="btn btn-warning ">Ajouter un magasin/stock</a>
+                                                        <div class="row">
+                                                            {% for key, liste_stock in listes_stocks %}
+                                                                {% if liste_stock.lieuVente.id == lieu_vente.id %}
+                                                                    <div class="col-sm-12 col-md-6">
+                                                                        <table class="table table-striped table-hover align-middle m-auto my-1">
+                                                                            <thead>
+                                                                                <tr><th colspan="2" class="text-center bg-info">
+                                                                                    {{ (liste_stock.nomStock|ucwords )}}
+                                                                                    <a class="btn btn-warning" href="{{ path('app_admin_liste_stock_edit', {'id': liste_stock.id}) }}">Modifier</a>
+                                                                                </th></tr>
+                                                                            </thead>
+                                                                            <tbody>
+                                                                                <tr>
+                                                                                    <th>Gestionnaire</th>
+                                                                                    <td>{{ liste_stock.responsable.nom | strtoupper ~ " " ~ liste_stock.responsable.prenom | ucwords  }}</td>
+                                                                                </tr>
+                                                                                <tr>
+                                                                                    <th>Adresse</th>
+                                                                                    <td>{{ liste_stock.adresse | ucwords  }}</td>
+                                                                                </tr>
+                                                                                <tr>
+                                                                                    <th>Type</th>
+                                                                                    <td>{{ liste_stock.type | ucwords  }}</td>
+                                                                                </tr>
+                                                                            </tbody>
+                                                                        </table>
+                                                                    </div>
+                                                                {% endif %}
+
+                                                            {% else %}
+                                                                <div class="alert alert-warning">Aucun magasin enregistré</div>
+                                                                
+                                                            {% endfor %}
+                                                        </div>
+                                                    </th>
                                                 </tr>
                                             </tbody>
                                         </table>

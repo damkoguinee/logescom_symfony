@@ -33,12 +33,39 @@ class Extension extends AbstractExtension{
                     $text .= "Administrateur";
                     break;
                 
-                case 'ROLE_MEDECIN':
-                    $text .= "Medecin";
+                case 'ROLE_VENDEUR':
+                    $text .= "Vendeur";
                     break;
                 
-                case 'ROLE_DEV':
+                case 'ROLE_LIVREUR':
+                    $text .= "Livreur";
+                    break;
+                case 'ROLE_COMPTABLE':
+                    $text .= "Comptable";
+                    break;
+                
+                case 'ROLE_STOCK':
+                    $text .= "Stock";
+                    break;
+
+                case 'ROLE_GESTIONNAIRE':
+                    $text .= "Gestionnaire";
+                    break;
+                case 'ROLE_RESPONSABLE':
+                    $text .= "Responsable";
+                    break;
+                case 'ROLE_ACTIONNAIRE':
+                    $text .= "Actionnaire";
+                    break;
+                case 'ROLE_DEVELOPPEUR':
                     $text .= "Dévéloppeur";
+                    break;
+                case 'ROLE_SUPPRESSION':
+                    $text .= "Suppression";
+                    break;
+
+                case 'ROLE_MODIFICATION':
+                    $text .= "Modification";
                     break;
                 default:
                     $text .="";

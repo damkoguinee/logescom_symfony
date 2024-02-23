@@ -5,11 +5,12 @@ namespace App\Controller\Admin;
 use App\Entity\User;
 use App\Form\UserType;
 use App\Repository\UserRepository;
+use App\Repository\EntrepriseRepository;
 use Doctrine\ORM\EntityManagerInterface;
-use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
+use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\PasswordHasher\Hasher\UserPasswordHasherInterface as Hasher;
 
 
@@ -17,10 +18,12 @@ use Symfony\Component\PasswordHasher\Hasher\UserPasswordHasherInterface as Hashe
 class UserController extends AbstractController
 {
     #[Route('/', name: 'app_admin_user_index', methods: ['GET'])]
-    public function index(UserRepository $userRepository): Response
+    public function index(UserRepository $userRepository, EntrepriseRepository $entrepriseRep): Response
     {
+        $entreprise = $entrepriseRep->find(1);
         return $this->render('admin/user/index.html.twig', [
             'users' => $userRepository->findAll(),
+            'entreprise' => $entreprise,
         ]);
     }
 

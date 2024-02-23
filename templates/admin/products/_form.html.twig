@@ -1,47 +1,66 @@
-{# {{ form_start(form) }}
-{{form_errors(productsForm)}}
-    
-    <button type="submit" class="btn btn-success my-2">Modifier</button>
-{{ form_end(form) }} #}
 
 
-{{form_start(productsForm)}}
     {{form_errors(productsForm)}}
-
+        {{form_start(productsForm)}}
         <div class="row">
             <div class="col-sm-12 col-md-3">
-                <label for="">Categorie <sup>*</sup></label>
-                {{form_widget(productsForm.categorie)}}
+                {{form_row(productsForm.categorie)}}
             </div>
             <div class="col-sm-12 col-md-2">
-                <label for="">Dimensions</label>
-                {{form_widget(productsForm.dimension)}}
+                {{form_row(productsForm.dimension)}}
             </div>
             <div class="col-sm-12 col-md-2">
-                <label for="">Epaisseur</label>
-                {{form_widget(productsForm.epaisseur)}}
+                {{form_row(productsForm.epaisseur)}}
             </div>
             <div class="col-sm-12 col-md-3">
-                <label for="">Origine</label>
-                {{form_widget(productsForm.origine)}}
+                {{form_row(productsForm.origine)}}
             </div>
 
             <div class="col-sm-12 col-md-2">
-                <label for="">Type</label>
-                {{form_widget(productsForm.type)}}
+                {{form_row(productsForm.type)}}
             </div>
         </div>
         <div class="row">
-            <div class="col-sm-12 col-md-6">
-                <label for="">Référence<sup>*</sup></label>
-                {{form_widget(productsForm.reference)}}
+            <div class="col-sm-12 col-md-2">
+                {{form_row(productsForm.reference)}}
             </div>
             <div class="col-sm-12 col-md-6">
-                <label for="">Désignation<sup>*</sup></label>
-                {{form_widget(productsForm.designation)}}
+                {{form_row(productsForm.designation)}}
             </div>
+            <div class="col-sm-12 col-md-4">
+                {{form_row(productsForm.codeBarre)}}
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-sm-12 col-md-4">
+                {{form_row(productsForm.typeProduit)}}
+            </div>
+            <div class="col-sm-12 col-md-2">
+                {{form_row(productsForm.nbrePiece)}}
+            </div>
+            <div class="col-sm-12 col-md-2">
+                {{form_row(productsForm.nbrePaquet)}}
+            </div>
+            <div class="col-sm-12 col-md-2">
+                {{form_row(productsForm.tva)}}
+            </div>
+            <div class="col-sm-12 col-md-2">
+                {{form_row(productsForm.prixVente)}}
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-sm-12 col-md-2">
+                {{form_row(productsForm.nbreVente)}}
+            </div>
+            <div class="col-sm-12 col-md-4">
+                {{form_row(productsForm.statut)}}
+            </div>
+            <div class="col-sm-12 col-md-2">
+                {{form_row(productsForm.statutComptable)}}
+            </div>
+            <input type="hidden" name="categorie" value="{{categorieId.id}}">
         </div>
         <button type="submit" class="btn btn-success my-2">Modifier</button>
-    {{form_end(productsForm)}}
 
-{# {{include("_common/_buttons_form.html.twig")}} #}
+    {{form_end(productsForm)}}

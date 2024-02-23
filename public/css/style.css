@@ -5,7 +5,7 @@
 a{
     text-decoration: none;
     list-style: none;
-    color: #313030;
+    color: #313031;
 }
 
 li{
@@ -156,6 +156,8 @@ section {
     padding: 20px 0px;
 }
 section .img-product{
+    width: 14rem !important;
+    height: 16rem !important;
     margin-bottom: 20px;
 }
 
@@ -221,16 +223,7 @@ section .img-product{
     padding-bottom: 50px;
 }
 
-/* Ajoutez une règle pour afficher la div lorsque le burger menu est actif */
-@media (max-width: 991.98px) {
-    .contact-search-container-top {
-        display: flex !important;
-    }
 
-    .contact-search-container-bottom {
-        display: none !important;
-    }
-}
 
 
 .top-ventes {
@@ -330,6 +323,48 @@ footer a{
 
 .miniature { height: 50px; width: 50px;}
 .img-banniere-miniature { height: 90px; width: 150px;}
+
+/* Ajoutez une règle pour afficher la div lorsque le burger menu est actif */
+@media (max-width: 991.98px) {
+    .contact-search-container-top {
+        display: flex !important;
+    }
+
+    .contact-search-container-bottom {
+        display: none !important;
+    }
+}
+
+/* adaptter pour le mode mobile */
+@media only screen and (max-width: 500px) {
+
+    section .img-product{
+        width: 18rem !important;
+        height: 20rem !important;
+        margin-bottom: 20px;
+    }
+    
+    .img-product img{
+        width: 180px !important;
+        height: 170px !important;
+        object-fit: cover;
+        object-position: 50% 50%;
+        border-radius: 100px;
+        transition: transform 1.1s;
+    }
+}
+
+.btn-primary {
+    background-color:#152736 !important;
+}
+
+.bg-info {
+    background-color:#193c51 !important;
+}
+
+.btn-info {
+    background-color: #53c3e9 !important;
+}
 
 
 

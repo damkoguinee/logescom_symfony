@@ -47,7 +47,7 @@ class ProductsRepository extends ServiceEntityRepository
 //        ;
 //    }
 
-/**
+    /**
      * @return array
      */
     public function findProductsHomePaginated(int $pageEnCours, int $limit): array
@@ -55,14 +55,11 @@ class ProductsRepository extends ServiceEntityRepository
         $limit = abs($limit);
         $result = [];
         $query = $this->createQueryBuilder('a')
+            ->orderBy('a.nbreVente', 'DESC')
             ->setMaxResults($limit)
             ->setFirstResult(($pageEnCours * $limit) - $limit);
         $paginator = new Paginator($query);
         $data = $paginator->getQuery()->getResult();
-        // on vérifie qu'on a des données
-        // if (empty($data)) {
-        //     return $result;
-        // }
         // on calcule le nombre des pages
 
         $nbrePages = ceil($paginator->count() / $limit);
@@ -117,6 +114,35 @@ class ProductsRepository extends ServiceEntityRepository
          $result['nbrePages'] = $nbrePages;
          $result['pageProductsEncours'] = $pageEnCours;
          $result['limit'] = $limit;         
+        return $result;
+    }
+
+    /**
+     * @return array
+     */
+    public function findProductsAdminPaginated($search, int $pageEnCours, int $limit): array
+    {
+        $limit = abs($limit);
+        $result = [];
+        $query = $this->createQueryBuilder('a')
+            ->leftJoin('a.categorie', 'c')
+            ->where('a.reference LIKE :search OR a.designation LIKE :search OR c.nameCategorie LIKE :search ')
+            ->setParameter('search', '%' . $search . '%')
+            ->orderBy('a.designation', 'ASC')
+            ->setMaxResults($limit)
+            ->setFirstResult(($pageEnCours * $limit) - $limit);
+        $paginator = new Paginator($query);
+        $data = $paginator->getQuery()->getResult();
+        // on calcule le nombre des pages
+
+        $nbrePages = ceil($paginator->count() / $limit);
+         // on remplit le tableau
+        
+         $result['data'] = $data;
+         $result['nbrePages'] = $nbrePages;
+         $result['pageEncours'] = $pageEnCours;
+         $result['limit'] = $limit;
+         
         return $result;
     }
 }
